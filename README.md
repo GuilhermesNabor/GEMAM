@@ -1,5 +1,5 @@
 
-# Sistema de Gerenciamento NABOR
+# Sistema de Gerenciamento GEMAM
 
 Este é um sistema de gerenciamento de usuários e empresas, com um fluxo de aprovação de novos administradores.
 
@@ -22,7 +22,7 @@ Este é um sistema de gerenciamento de usuários e empresas, com um fluxo de apr
 
 1. Clone o repositório:
    ```bash
-   git clone https://github.com/seu-usuario/seu-repositorio.git
+   git clone https://github.com/GuilhermesNabor/GEMAM.git
    ```
 2. Instale as dependências:
    ```bash
