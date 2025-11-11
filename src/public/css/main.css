@@ -1,0 +1,41 @@
+#pending-admins-list li {
+    /* Garante que o layout flex funcione bem em mobile */
+    flex-direction: column; 
+    align-items: flex-start;
+    gap: 8px;
+}
+
+#pending-admins-list li .button-group {
+    display: flex;
+    gap: 8px; /* Espaço entre os botões "Aprovar" e "Recusar" */
+    flex-shrink: 0; 
+    align-self: flex-end; /* Alinha o grupo de botões à direita */
+}
+
+/* Estilo genérico para os botões da lista */
+#pending-admins-list li .btn-approve,
+#pending-admins-list li .btn-decline {
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: background-color 0.3s ease;
+}
+
+/* Cor específica para Aprovar (Verde) */
+#pending-admins-list li .btn-approve {
+    background-color: #28a745; 
+}
+#pending-admins-list li .btn-approve:hover {
+    background-color: #218838;
+}
+
+/* Cor específica para Recusar (Vermelho) */
+#pending-admins-list li .btn-decline {
+    background-color: #e74c3c; /* Vermelho */
+}
+#pending-admins-list li .btn-decline:hover {
+    background-color: #c0392b;
+}

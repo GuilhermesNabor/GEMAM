@@ -1,0 +1,75 @@
+<main id="login-layout" class="split-container">
+    
+    <div class="welcome-panel">
+        <h1>Bem-Vindo de Volta!</h1>
+        <p>Para se manter conectado conosco, por favor, faça login com suas informações pessoais.</p>
+    </div>
+
+    
+    <div class="form-panel">
+        <header class="page-header">
+            <h2>Sistema de Gerenciamento NABOR</h2>
+        </header>
+
+        
+        <div id="login-section" class="form-card current">
+            <h3>Login</h3>
+            
+            <form id="login-form" action="/login" method="POST"> 
+                <div class="form-group">
+                    <label for="login-email"><i class="fas fa-envelope icon-prefix"></i> E-mail:</label>
+                    <input type="email" id="login-email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password"><i class="fas fa-lock icon-prefix"></i> Senha:</label>
+                    <input type="password" id="login-password" name="password" required>
+                </div>
+                <button type="submit">Entrar</button>
+            </form>
+            <p class="toggle-link">Não tem uma conta? <a href="#" id="show-register-admin">Cadastre-se como Administrador</a></p>
+        </div>
+
+        
+        <div id="register-admin-section" class="form-card hidden">
+            <h3>Criar Conta de Administrador</h3>
+            
+            <form id="register-admin-form" action="/api/users/register/admin" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="razao_social"><i class="fas fa-building icon-prefix"></i> Razão Social:</label>
+                    <input type="text" id="razao_social" name="razao_social" required>
+                </div>
+                <div class="form-group">
+                    <label for="cnpj"><i class="fas fa-id-card icon-prefix"></i> CNPJ:</label>
+                    <input type="text" id="cnpj" name="cnpj" placeholder="XX.XXX.XXX/XXXX-XX" required>
+                </div>
+                <div class="form-group">
+                    <label for="admin_name"><i class="fas fa-user icon-prefix"></i> Nome do Contato (Admin):</label>
+                    <input type="text" id="admin_name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="admin_phone"><i class="fas fa-phone icon-prefix"></i> Telefone:</label>
+                    <input type="tel" id="admin_phone" name="phone" placeholder="(XX) XXXXX-XXXX" required>
+                </div>
+                <div class="form-group">
+                    <label for="admin_email"><i class="fas fa-envelope icon-prefix"></i> E-mail (Admin):</label>
+                    <input type="email" id="admin_email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="admin_password"><i class="fas fa-lock icon-prefix"></i> Senha:</label>
+                    <input type="password" id="admin_password" name="password" required>
+                </div>
+                <div class="form-group">
+                    <label for="admin_logo"><i class="fas fa-image icon-prefix"></i> Logo da Empresa (PNG, JPEG, JPG):</label>
+                    <input type="file" id="admin_logo" name="logo" accept=".png, .jpeg, .jpg" required>
+                </div>
+                
+                <button type="submit">Solicitar Cadastro</button>
+            </form>
+            <p class="toggle-link">Já tem uma conta? <a href="#" id="show-login">Fazer Login</a></p>
+        </div>
+        
+        <div id="message-area-login" class="message-area"></div>
+    </div>
+</main>
+
+<script src="/js/login.js"></script>
