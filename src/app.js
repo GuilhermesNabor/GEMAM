@@ -1,6 +1,7 @@
 const express = require('express');
 const { initializeDatabase } = require('./config/database');
 const path = require('path');
+const fs = require('fs');
 const cors = require('cors');
 require('dotenv').config();
 
@@ -13,6 +14,7 @@ const authRoutes = require('./routes/authRoutes');
 const userRoutes = require('./routes/userRoutes');
 const apsRoutes = require('./routes/apsRoutes');
 const AuthController = require('./controllers/authController');
+const destCompanyRoutes = require('./routes/destCompanyRoutes');
 
 const app = express();
 
@@ -93,14 +95,16 @@ app.get('/logout', (req, res) => {
         res.redirect('/login'); // Sucesso, volta pro login
     });
 });
-//
 
-// ROTAS DE API (As que já tínhamos)
-// Vamos modificar a /api/auth/login
-// As outras continuam funcionando
+const uploadDir = './src/uploads/docs';
+if (!fs.existsSync(uploadDir)){
+    fs.mkdirSync(uploadDir, { recursive: true });
+}
+
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/aps', apsRoutes);
+app.use('/destination', destCompanyRoutes);
 
 // Função de Início (Igual)
 async function startServer() {

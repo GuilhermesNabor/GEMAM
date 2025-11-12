@@ -31,6 +31,37 @@ CREATE TABLE IF NOT EXISTS action_logs (
     FOREIGN KEY (user_id) REFERENCES users (id)
 );
 
+CREATE TABLE IF NOT EXISTS destination_companies (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    created_by_user_id INTEGER, -- Quem cadastrou
+    
+    -- Campos da Imagem (IV - Dados da destinação final)
+    razao_social TEXT NOT NULL,
+    inscricao_estadual TEXT,
+    cnpj TEXT NOT NULL,
+    licenca_ibama TEXT,
+    data_vencimento DATE,
+    endereco TEXT,
+    municipio_uf TEXT,
+    cep TEXT,
+    email_contato TEXT,
+    telefone_contato TEXT,
+    responsavel_tecnico TEXT,
+    registro_profissional TEXT,
+    
+    -- Arquivos Obrigatórios
+    path_licenca_operacao TEXT NOT NULL,
+    path_alvara TEXT NOT NULL,
+    path_comprovante_ctf TEXT NOT NULL,
+    
+    -- Controle da APS
+    status TEXT DEFAULT 'PENDING', 'REJECTED'
+    rejection_reason TEXT,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    
+    FOREIGN KEY (created_by_user_id) REFERENCES users (id)
+);
+
 -- Insere um usuário master 'APS' para podermos começar
 -- Senha: "aps123"
 INSERT OR IGNORE INTO users (id, name, email, password_hash, role, is_pending_approval, is_active)

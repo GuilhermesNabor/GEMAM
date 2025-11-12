@@ -1,6 +1,6 @@
 <div id="dashboard-layout"> 
     <header class="dashboard-header">
-        <h1>Sistema de Gerenciamento NABOR</h1>
+        <h1>Sistema de Gerenciamento GEMAM</h1>
         <nav>
             <a href="/logout" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Sair</a>
         </nav>
@@ -31,6 +31,20 @@
             </form>
         </div>
         
+        <div class="dashboard-card">
+            <h2>Ações Rápidas</h2>
+            <a href="/destination/register" class="ghost-button" style="background: #3498db; padding: 15px; border-radius: 5px; text-decoration: none; display: inline-block;">
+                <i class="fas fa-truck"></i> Cadastrar Empresa de Destino
+            </a>
+        </div>
+
+        <div id="aps-dest-section" class="dashboard-card hidden">
+            <h2><i class="fas fa-building"></i> Aprovação de Empresas de Destino</h2>
+            <ul id="pending-dest-list">
+                <li>Carregando...</li>
+            </ul>
+        </div>
+
         <div id="aps-admin-section" class="dashboard-card hidden">
             <h2><i class="fas fa-tasks"></i> Administração APS</h2>
             <p>Gerencie as solicitações de cadastro e bloqueios aqui.</p>

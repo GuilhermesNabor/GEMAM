@@ -1,0 +1,125 @@
+<div class="split-container">
+    <div class="welcome-panel" style="width: 30%;">
+        <h1>Cadastro de Destino</h1>
+        <p>Cadastre as empresas receptoras de resíduos.</p>
+        <p>Necessário aprovação da APS.</p>
+        <br>
+        <a href="/dashboard" class="ghost-button" style="border: 1px solid white; padding: 10px 20px; border-radius: 20px; color: white; text-decoration: none;">Voltar ao Dashboard</a>
+    </div>
+
+    <div class="form-panel" style="width: 70%; left: 30%;">
+        <div class="form-card current" style="max-width: 800px; width: 90%;">
+            <h3>IV - Dados da Destinação Final</h3>
+            
+            <form id="dest-form">
+                <div style="display: flex; gap: 10px;">
+                    <div class="form-group" style="flex: 2;">
+                        <label>24 - Razão Social:</label>
+                        <input type="text" name="razao_social" required>
+                    </div>
+                    <div class="form-group" style="flex: 1;">
+                        <label>25 - Inscrição Estadual:</label>
+                        <input type="text" name="inscricao_estadual">
+                    </div>
+                    <div class="form-group" style="flex: 1;">
+                        <label>26 - CNPJ:</label>
+                        <input type="text" name="cnpj" required>
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 10px;">
+                    <div class="form-group" style="flex: 2;">
+                        <label>27 - Licença IBAMA ou OEMA:</label>
+                        <input type="text" name="licenca_ibama">
+                    </div>
+                    <div class="form-group" style="flex: 1;">
+                        <label>28 - Data de Vencimento:</label>
+                        <input type="date" name="data_vencimento">
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 10px;">
+                    <div class="form-group" style="flex: 3;">
+                        <label>29 - Endereço:</label>
+                        <input type="text" name="endereco">
+                    </div>
+                    <div class="form-group" style="flex: 1;">
+                        <label>30 - Município/UF:</label>
+                        <input type="text" name="municipio_uf">
+                    </div>
+                    <div class="form-group" style="flex: 1;">
+                        <label>31 - CEP:</label>
+                        <input type="text" name="cep">
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 10px;">
+                    <div class="form-group" style="flex: 1;">
+                        <label>32 - Email para contato:</label>
+                        <input type="email" name="email_contato">
+                    </div>
+                    <div class="form-group" style="flex: 1;">
+                        <label>33 - Telefone para contato:</label>
+                        <input type="text" name="telefone_contato">
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 10px;">
+                    <div class="form-group" style="flex: 1;">
+                        <label>34 - Responsável técnico:</label>
+                        <input type="text" name="responsavel_tecnico">
+                    </div>
+                    <div class="form-group" style="flex: 1;">
+                        <label>35 - Registro profissional:</label>
+                        <input type="text" name="registro_profissional">
+                    </div>
+                </div>
+
+                <hr style="margin: 20px 0; border-top: 1px solid #eee;">
+                <h4>Documentação Obrigatória</h4>
+
+                <div class="form-group">
+                    <label>Upload Licença de Operação:</label>
+                    <input type="file" name="file_licenca_operacao" required>
+                </div>
+                <div class="form-group">
+                    <label>Upload Alvará de Funcionamento:</label>
+                    <input type="file" name="file_alvara" required>
+                </div>
+                <div class="form-group">
+                    <label>Upload Comprovante CTF APP/AIDA:</label>
+                    <input type="file" name="file_ctf" required>
+                </div>
+
+                <button type="submit" style="margin-bottom: 50px;">Cadastrar Empresa de Destino</button>
+            </form>
+        </div>
+        <div id="message-area-dest" class="message-area"></div>
+    </div>
+</div>
+
+<script>
+document.getElementById('dest-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const msgArea = document.getElementById('message-area-dest');
+
+    try {
+        const response = await fetch('/destination/register', {
+            method: 'POST',
+            body: formData,
+            credentials: 'include'
+        });
+        const data = await response.json();
+        
+        msgArea.textContent = data.message || data.error;
+        msgArea.className = 'message-area ' + (response.ok ? 'success' : 'error') + ' show';
+        
+        if(response.ok) e.target.reset();
+        
+        setTimeout(() => msgArea.classList.remove('show'), 5000);
+    } catch (err) {
+        alert('Erro de conexão');
+    }
+});
+</script>
