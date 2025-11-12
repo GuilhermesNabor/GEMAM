@@ -2,3 +2,4 @@ node_modules
 .env
 src/database/nabor.db
 generate-hash.js
+src/uploads/
