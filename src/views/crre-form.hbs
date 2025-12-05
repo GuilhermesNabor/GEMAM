@@ -1,0 +1,139 @@
+<div class="container crre-form-page">
+    <div class="dashboard-card">
+        
+        <div class="crre-header">
+            <div class="header-logo">
+                <img src="{{autoFillData.logo_path}}" alt="Logo Empresa">
+            </div>
+            <div class="header-title">
+                <h2>CERTIFICADO DE RETIRADA DE RESÍDUOS DE EMBARCAÇÃO - CRRE</h2>
+            </div>
+            <div class="header-details">
+                <p><strong>Número:</strong> <span>(Gerado ao Salvar)</span></p>
+                <p><strong>Data:</strong> <span>{{currentDate}}</span></p>
+                <p><strong>Instalação:</strong> <span>Porto de Santos</span></p>
+            </div>
+        </div>
+
+        <form id="crre-form">
+            
+            <fieldset class="form-section">
+                <legend>I - Informações da Embarcação</legend>
+                <div class="form-grid two-cols">
+                    <div class="form-group" style="flex: 2;">
+                        <label>4 - Nome da Embarcação:</label>
+                        <input type="text" name="vessel_name" required>
+                    </div>
+                    <div class="form-group" style="flex: 1;">
+                        <label>5 - Nº IMO:</label>
+                        <input type="text" name="imo_number" maxlength="7" placeholder="7 dígitos">
+                    </div>
+                    <div class="form-group" style="flex: 1;">
+                        <label>6 - Nacionalidade:</label>
+                        <select name="nationality" required>
+                            <option value="">Selecione...</option>
+                            <option value="Brasileira">Brasileira</option>
+                            <option value="Estrangeira">Estrangeira</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-grid three-cols">
+                    <div class="form-group">
+                        <label>7 - Empresa de Navegação:</label>
+                        <input type="text" name="navigation_company" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Nome do Armador:</label>
+                        <input type="text" name="armador_name">
+                    </div>
+                    <div class="form-group">
+                        <label>Local de Atracação:</label>
+                        <input type="text" name="docking_location">
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset class="form-section">
+                <legend>II - Informações do Serviço</legend>
+                
+                <div class="form-grid four-cols">
+                    <div class="form-group">
+                        <label>8 - Data Início:</label>
+                        <input type="date" name="start_date" required>
+                    </div>
+                    <div class="form-group">
+                        <label>9 - Hora Início:</label>
+                        <input type="time" name="start_time" required>
+                    </div>
+                    <div class="form-group">
+                        <label>10 - Data Término:</label>
+                        <input type="date" name="end_date" required>
+                    </div>
+                    <div class="form-group">
+                        <label>11 - Hora Término:</label>
+                        <input type="time" name="end_time" required>
+                    </div>
+                </div>
+
+                <div class="retrieval-mode-group">
+                    <label class="group-label">II.2 - Modalidade de Retirada:</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="retrieval_mode" value="TERRA" checked onchange="toggleMTR(this.value)"> 12 - Terra</label>
+                        <label><input type="radio" name="retrieval_mode" value="MAR" onchange="toggleMTR(this.value)"> 13 - Mar</label>
+                    </div>
+                </div>
+
+                <div class="provider-info">
+                    <p><strong>II.3 - Empresa Prestadora:</strong> {{autoFillData.razao_social}} (CNPJ: {{autoFillData.cnpj}})</p>
+                    <p><small>Contato: {{autoFillData.contact_name}} | Tel: {{autoFillData.contact_phone}} | Email: {{autoFillData.contact_email}}</small></p>
+                </div>
+            </fieldset>
+
+            <fieldset class="form-section">
+                <legend>III - Tipo e Quantidade de Resíduos</legend>
+                
+                <div class="table-container">
+                    <table class="crre-waste-table">
+                        <thead>
+                            <tr>
+                                <th>Nº (Tipo)</th>
+                                <th>Detalhe/Cat.</th>
+                                <th class="col-small">Unid.</th>
+                                <th class="col-medium">Qtd.</th>
+                                <th>Observações</th>
+                                <th class="col-small">Arm. Temp.</th>
+                                <th>MTR (12 díg.)</th>
+                                <th class="col-action">Ação</th>
+                            </tr>
+                        </thead>
+                        <tbody id="waste-rows">
+                            <!-- Linhas de resíduos serão inseridas aqui via JS -->
+                        </tbody>
+                    </table>
+                </div>
+                <button type="button" class="btn btn-add" onclick="addWasteRow()">+ Adicionar Resíduo</button>
+            </fieldset>
+
+            <fieldset class="form-section">
+                <legend>IV - Destinação Final</legend>
+                <div class="form-group">
+                    <label>Selecione a Empresa de Destino (Aprovada pela APS):</label>
+                    <select name="destination_company_id" required>
+                        <option value="">Selecione...</option>
+                        {{#each approvedDestinations}}
+                            <option value="{{this.id}}">{{this.razao_social}} (CNPJ: {{this.cnpj}})</option>
+                        {{/each}}
+                    </select>
+                </div>
+            </fieldset>
+
+            <div class="form-actions">
+                <a href="/dashboard" class="btn btn-secondary">Cancelar</a>
+                <button type="submit" class="btn btn-primary">EMITIR CERTIFICADO</button>
+            </div>
+        </form>
+    </div>
+    <div id="message-area-crre" class="message-area"></div>
+</div>
+
+<script src="/js/crre-form.js"></script>

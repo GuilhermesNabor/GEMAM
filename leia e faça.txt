@@ -1,0 +1,235 @@
+FORMULÁRIO – CERTIFICADO DE RETIRADA DE RESÍDUOS DE EMBARCAÇÃO (CRRE) 
+
+Formulário de retirada de resíduos de embarcação conforme Resolução ANTAQ nº 99/2023. Todos os campos devem estar em português e inglês. 
+
+A identificação do formulário deve seguir o modelo abaixo: 
+
+Texto, Tabela
+
+O conteúdo gerado por IA pode estar incorreto. 
+
+Número sequencial do Certificado: Número exclusivo e sequencial, deverá ser gerado automaticamente; 
+
+Data da emissão, gerada automaticamente no dia em que o CRRE foi emitido; 
+
+Instalação Portuária: Preencher “Porto de Santos” automaticamente 
+
+ 
+
+Identificação da Embarcação 
+
+A identificação da embarcação deve possuir obrigatoriamente os campos abaixo: 
+
+Padrão do plano de fundo
+
+O conteúdo gerado por IA pode estar incorreto. 
+
+Nome da Embarcação: Campo Livre (nomes de navios mudam com frequência). Recomendação de preencher automaticamente com base no número IMO, caso a APS disponha de listas com atualização periódica; 
+
+Nacionalidade – Lista de Validação; 
+
+Nº IMO – Código internacional da embarcação composto por 7 dígitos numéricos – campo mais importante para identificação dos navios – número não disponível para embarcações de apoio portuário (rebocadores, dragas); 
+
+Empresa de Navegação- Usar lista de validação; 
+
+Outros campos necessários (não constam na resolução da ANTAQ, mas a APS eventualmente precisa produzir relatórios com essas informações: 
+
+Nome do Armador - Usar lista de validação. 
+
+ 
+
+Informações do serviço 
+
+São obrigatórios os seguintes dados do serviço: 
+
+Interface gráfica do usuário, Aplicativo
+
+O conteúdo gerado por IA pode estar incorreto. 
+
+Data de Início: Informar data de início da operação formato DD/MM/AAA; 
+
+Horário de Início: informar hora de início em formato HH:MM; 
+
+Data de Término: Informar data de término da operação formato DD/MM/AAA; 
+
+Horário de Término: informar hora de término em formato HH:MM; 
+
+Modalidade de retirada por terra (seleção única): atualmente todas as empresas com exceção da COMTROL retiram na modalidade por terra. A APS tem restringido novas autorizações nesse sentido; 
+
+Modalidade de retirada por mar (seleção única): apenas a COMTROL; 
+
+ Razão social: autopreenchimento com base no login; 
+
+CNPJ: autopreenchimento com base no login; 
+
+Nome do Contato: autopreenchimento com base no login; 
+
+Telefone:  autopreenchimento com base no login; 
+
+E-mail para contato: autopreenchimento com base no login; e 
+
+MTR relacionado: Pode ser mais de um por navio MTR, embora a norma cobre essa informação aqui, entendemos que o ideal que seja fazer uma correspondência com o resíduo. 
+
+Outros Campos: 
+
+Logo – autopreenchimento com base no login (Cabeçalho superior do formulário); e 
+
+Local de Atracação - Usar lista de validação. 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Resíduos Coletados 
+
+A Resolução ANTAQ exige as seguintes informações para o resíduo: 
+
+Tabela
+
+O conteúdo gerado por IA pode estar incorreto. 
+
+Número: Selecionar de 1 a 13 (a legenda deve estar visível) – pode permitir mais de um resíduo – permitir adicionar até 20 linhas por certificado. 
+
+1. água de lastro suja; 
+
+2. água oleosa de porão; 
+
+3. mistura oleosa contendo químicos; 
+
+4. resíduos oleosos (borra); 
+
+5. água com óleo resultante de lavagem de tanques; 
+
+6. crosta e borra resultantes da raspagem de tanques e cascos; 
+
+7. substâncias químicas líquidas nocivas; 
+
+8. esgoto e águas servidas; 
+
+9. lixo doméstico operacional; se número = 9, abrir subcategoria com os seguintes campos 
+
+Plastics/Plásticos 
+
+Food wastes/Resíduos alimentares 
+
+Domestic wastes/Resíduos domésticos 
+
+Cooking oil/Óleo de cozinha 
+
+Incinerator ashes/Cinzas de incinerador 
+
+Operational wastes/resíduos operacionais 
+
+Animal carcasses/Carcaças de animais 
+
+Fishing gear/Equipamentos de pesca 
+
+E-waste/Resíduos eletrônicos 
+
+Cargo residues (non-HME)/Resíduos de carga (não HME) 
+
+Cargo residues HME/Resíduos de carga HME 
+
+Obs: “HME” refere-se a “harmful to the marine environment” ou prejudicial ao ambiente marinho 
+
+10.resíduos de limpeza de sistemas de exaustão de gases; 
+
+11.substâncias redutoras da camada de ozônio; 
+
+12.resíduos hospitalares ou de saúde; e 
+
+13.outros. Se número = 13, abrir campo de texto livre para especificar 
+
+Unidade: Seleção {t (tonelada) ou m³} 
+
+Quantidade: número decimal com 3 casas após a virgula de 0,001 até 45,000 
+
+Observações: Campo de texto livre (opcional) 
+
+Outros Campos: 
+
+Armazenamento Temporário: Seleção {Sim ou Não} 
+
+MTR correspondente: valor numérico de 12 dígitos (identifica o caminhão em que o resíduo foi alocado) – opção desabilitada em caso de modalidade de coleta por “Mar” - pode ser mais de um por navio, sendo que cada MTR demanda um certificado correspondente, vide o exemplo abaixo: 
+
+ 
+
+Tipo e quantidade de resíduos coletados 
+
+ 
+
+Número 
+
+categoria 
+
+Unidade 
+
+Quantidade 
+
+Observações 
+
+Armazenamento temporário 
+
+MTR 
+
+2 
+
+  
+
+m³ 
+
+10,500 
+
+  
+
+Não 
+
+230002844104 
+
+9 
+
+C 
+
+m³ 
+
+15,00 
+
+  
+
+Não 
+
+230002884456 
+
+9 
+
+B 
+
+m³ 
+
+5,00 
+
+cabotagem 
+
+Não 
+
+230002884456 
+
+ 
+
+Impressão do certificado: configurar modelo de impressão em pdf, após gerado, enviar automaticamente para: 
+
+ residuosdeembarcacao@portodesantos.gov.br;  
+
+usuário que elaborou o documento;  
+
+administrador da empresa;  
+
+até três outros e-mails especificados pelo usuário 
+
+ 
+
+A versão impressa deve ter campos de assinatura para o representante do navio e o representante da empresa coletora. No final um campo para preenchimento manual da data e ciência do representante da Autoridade Controladora (APS ou Terminal portuário). 

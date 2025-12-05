@@ -47,10 +47,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (registerAdminForm) {
         registerAdminForm.addEventListener('submit', async (e) => {
-            // 1. Impede o envio padrão (que mostra o JSON)
+            // Impede o envio padrão (que mostra o JSON)
             e.preventDefault(); 
             
-            // 2. Pega os dados do formulário (incluindo o arquivo/logo)
+            // Pega os dados do formulário (incluindo o arquivo/logo)
             const formData = new FormData(registerAdminForm);
 
             // Validação do CNPJ (copiada do seu backend)
@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             try {
-                // 3. Envia os dados em segundo plano (AJAX/Fetch)
+                // Envia os dados em segundo plano (AJAX/Fetch)
                 const response = await fetch('/api/users/register/admin', {
                     method: 'POST',
                     body: formData 

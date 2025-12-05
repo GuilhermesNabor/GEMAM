@@ -36,11 +36,14 @@ class DestCompanyController {
             }
 
             try {
+                // Função para normalizar o path
+                const normalizePath = (p) => p.replace(/\\/g, '/').replace('src/', '');
+
                 const data = {
                     ...req.body,
-                    path_licenca_operacao: req.files['file_licenca_operacao'][0].path,
-                    path_alvara: req.files['file_alvara'][0].path,
-                    path_comprovante_ctf: req.files['file_ctf'][0].path
+                    path_licenca_operacao: normalizePath(req.files['file_licenca_operacao'][0].path),
+                    path_alvara: normalizePath(req.files['file_alvara'][0].path),
+                    path_comprovante_ctf: normalizePath(req.files['file_ctf'][0].path)
                 };
 
                 const result = await DestCompanyService.create(data, req.session.user.id);
@@ -80,6 +83,37 @@ class DestCompanyController {
             res.json(result);
         } catch (error) {
             res.status(500).json({ error: error.message });
+        }
+    }
+
+    // Lista para o ADMIN
+    async getMyList(req, res) {
+        try {
+            const list = await DestCompanyService.getByUser(req.session.user.id);
+            res.json({ companies: list });
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    }
+
+    // Histórico para a APS
+    async getHistory(req, res) {
+        try {
+            const list = await DestCompanyService.getHistory();
+            res.json({ companies: list });
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    }
+
+    async delete(req, res) {
+        try {
+            const { id } = req.params;
+            // Passa o ID do destino, o ID do usuário e o Papel (Role) para validar
+            await DestCompanyService.deleteDestination(id, req.session.user.id, req.session.user.role);
+            res.json({ message: 'Destino excluído.' });
+        } catch (error) {
+            res.status(400).json({ error: error.message });
         }
     }
 }

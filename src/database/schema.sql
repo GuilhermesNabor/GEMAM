@@ -62,6 +62,69 @@ CREATE TABLE IF NOT EXISTS destination_companies (
     FOREIGN KEY (created_by_user_id) REFERENCES users (id)
 );
 
+-- Tabela para os Certificados de Retirada de Resíduos de Embarcação (CRRE)
+CREATE TABLE IF NOT EXISTS crres (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    crre_number TEXT NOT NULL UNIQUE,
+    issue_date TEXT NOT NULL,
+
+    -- Dados da Instalação Portuária
+    port_installation TEXT NOT NULL DEFAULT 'Porto de Santos',
+
+    -- Informações da Embarcação
+    vessel_name TEXT NOT NULL,
+    imo_number TEXT,
+    nationality TEXT NOT NULL,
+    navigation_company TEXT NOT NULL,
+    armador_name TEXT,
+    docking_location TEXT,
+
+    -- Informações do Serviço
+    service_start_date TEXT NOT NULL,
+    service_start_time TEXT NOT NULL,
+    service_end_date TEXT NOT NULL,
+    service_end_time TEXT NOT NULL,
+    retrieval_mode TEXT NOT NULL,
+    
+    -- Empresa Prestadora do Serviço (Autopreenchimento)
+    company_id INTEGER NOT NULL,
+    contact_name TEXT,
+    contact_phone TEXT,
+    contact_email TEXT,
+    
+    -- Dados da Destinação Final (FK para destination_companies)
+    destination_company_id INTEGER,
+    
+    -- Status
+    status TEXT NOT NULL DEFAULT 'ISSUED', -- 'ISSUED' (Emitido) / 'DRAFT' (Rascunho)
+    
+    -- Auditoria
+    created_by_user_id INTEGER NOT NULL,
+    created_at TEXT DEFAULT CURRENT_TIMESTAMP,
+
+    FOREIGN KEY (company_id) REFERENCES companies(id),
+    FOREIGN KEY (created_by_user_id) REFERENCES users(id),
+    FOREIGN KEY (destination_company_id) REFERENCES destination_companies(id)
+);
+
+-- Tabela para os Resíduos Coletados (Linhas Dinâmicas da Seção III)
+CREATE TABLE IF NOT EXISTS crre_residues (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    crre_id INTEGER NOT NULL,
+    
+    waste_number INTEGER NOT NULL,
+    unit TEXT NOT NULL,
+    quantity REAL NOT NULL,
+    observations TEXT,
+
+    -- Campos Condicionais
+    category TEXT,
+    mtr_number TEXT,
+    temporary_storage INTEGER DEFAULT 0,
+
+    FOREIGN KEY (crre_id) REFERENCES crres(id) ON DELETE CASCADE
+);
+
 -- Insere um usuário master 'APS' para podermos começar
 -- Senha: "aps123"
 INSERT OR IGNORE INTO users (id, name, email, password_hash, role, is_pending_approval, is_active)

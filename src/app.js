@@ -3,6 +3,7 @@ const { initializeDatabase } = require('./config/database');
 const path = require('path');
 const fs = require('fs');
 const cors = require('cors');
+const crreRoutes = require('./routes/crreRoutes');
 require('dotenv').config();
 
 const { engine } = require('express-handlebars');
@@ -28,14 +29,11 @@ app.engine('hbs', engine({
 }));
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'views'));
-//
 
 // CONFIGURAÇÃO DE MIDDLEWARES
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true })); // Para formulários HTML
-app.use(cookieParser());
-
 // CONFIGURAÇÃO DA SESSÃO
 app.use(session({
     secret: process.env.SESSION_SECRET || 'um_segredo_muito_forte', 
@@ -43,15 +41,15 @@ app.use(session({
     saveUninitialized: false,
     cookie: { maxAge: 60 * 60 * 1000 } // 1 hora
 }));
-//
+
+// Rotas que dependem de sessão
+app.use('/crre', crreRoutes);
 
 // CONFIGURAÇÃO DE ARQUIVOS ESTÁTICOS (CSS/JS)
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
-//-
 
 // NOVAS ROTAS WEB (Renderização)
-// Middleware de "Guarda"
 function ensureAuthenticated(req, res, next) {
     if (req.session.user) {
         return next(); // Usuário logado, continue
@@ -73,7 +71,6 @@ app.get('/login', (req, res) => {
     if (req.session.user) {
         return res.redirect('/dashboard'); 
     }
-    // Simplificado: Apenas renderiza a página de login. O JS cuida do resto.
     res.render('login', { layout: 'main' });
 });
 

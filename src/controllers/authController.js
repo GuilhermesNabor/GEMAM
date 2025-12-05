@@ -48,8 +48,14 @@ class AuthController {
 
             await logAction(user.id, 'USER_LOGIN', `Usuário ${user.email} logou.`);
 
-            // Redireciona para o dashboard
-            res.redirect('/dashboard');
+            req.session.save((err) => {
+                if (err) {
+                    console.error('Erro ao salvar a sessão:', err);
+                    return res.status(500).render('login', { error: 'Erro interno ao salvar a sessão.' });
+                }
+                // Redireciona para o dashboard apenas após salvar
+                res.redirect('/dashboard');
+            });
 
         } catch (error) {
             console.error('Erro no login:', error);

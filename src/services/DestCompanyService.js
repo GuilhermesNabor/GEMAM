@@ -43,6 +43,38 @@ class DestCompanyService {
         await db.run("UPDATE destination_companies SET status = 'REJECTED' WHERE id = ?", id);
         return { message: 'Empresa de destino recusada.' };
     }
+    
+    async getByUser(userId) {
+        const db = getDb();
+        return await db.all("SELECT * FROM destination_companies WHERE created_by_user_id = ? ORDER BY created_at DESC", userId);
+    }
+
+    // Busca tudo que NÃO está pendente (Aprovado/Recusado)
+    async getHistory() {
+        const db = getDb();
+        return await db.all("SELECT * FROM destination_companies WHERE status != 'PENDING' ORDER BY created_at DESC");
+    }
+
+    async deleteDestination(destId, userId, userRole) {
+        const db = getDb();
+        
+        // Verifica se o destino existe e quem criou
+        const dest = await db.get("SELECT * FROM destination_companies WHERE id = ?", destId);
+        if (!dest) throw new Error("Destino não encontrado.");
+
+        // Se for ADMIN, só pode deletar o que ele criou
+        if (userRole === 'ADMIN' && dest.created_by_user_id !== userId) {
+            throw new Error("Permissão negada. Você só pode excluir destinos que cadastrou.");
+        }
+
+        await db.run("DELETE FROM destination_companies WHERE id = ?", destId);
+        return { message: "Empresa de destino excluída com sucesso." };
+    }
+    
+    async getApprovedDestinations() {
+        const db = getDb();
+        return await db.all("SELECT id, razao_social, cnpj FROM destination_companies WHERE status = 'APPROVED'");
+    }
 }
 
 module.exports = new DestCompanyService();
