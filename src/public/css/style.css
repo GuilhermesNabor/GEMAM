@@ -495,7 +495,7 @@ body {
 
 /* Sistema de Botões */
 .btn {
-    padding: 10px 20px;
+    padding: 20px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -508,18 +508,22 @@ body {
 }
 
 .btn-primary {
-    background-color: #2193b0;
+    background-color: #1e778d;
     color: white;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    
 }
-.btn-primary:hover { background-color: #1a758c; }
+.btn-primary:hover { background-color: #135e75; }
 
 .btn-secondary {
-    background-color: #95a5a6;
+    background-color: #d34343;
     color: white;
+    text-align: center;
+    margin-top: 20px;
 }
-.btn-secondary:hover { background-color: #7f8c8d; }
+
+.btn-secondary:hover { background-color: #a52323; }
 
 .btn-add {
     background-color: #27ae60;
@@ -531,9 +535,10 @@ body {
 .form-actions {
     display: flex;
     justify-content: flex-end;
-    gap: 10px;
-    margin-top: 30px;
+    gap: 20px;
+    
 }
+
 
 @media (max-width: 768px) {
     .crre-header {

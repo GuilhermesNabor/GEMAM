@@ -3,7 +3,7 @@
         
         <div class="crre-header">
             <div class="header-logo">
-                <img src="{{autoFillData.logo_path}}" alt="Logo Empresa">
+                <img src="/{{autoFillData.logo_path}}" alt="Logo Empresa">
             </div>
             <div class="header-title">
                 <h2>CERTIFICADO DE RETIRADA DE RESÍDUOS DE EMBARCAÇÃO - CRRE</h2>
@@ -18,18 +18,18 @@
         <form id="crre-form">
             
             <fieldset class="form-section">
-                <legend>I - Informações da Embarcação</legend>
+                <legend>Informações da Embarcação</legend>
                 <div class="form-grid two-cols">
                     <div class="form-group" style="flex: 2;">
-                        <label>4 - Nome da Embarcação:</label>
+                        <label>Nome da Embarcação:</label>
                         <input type="text" name="vessel_name" required>
                     </div>
                     <div class="form-group" style="flex: 1;">
-                        <label>5 - Nº IMO:</label>
+                        <label>Nº IMO:</label>
                         <input type="text" name="imo_number" maxlength="7" placeholder="7 dígitos">
                     </div>
                     <div class="form-group" style="flex: 1;">
-                        <label>6 - Nacionalidade:</label>
+                        <label>Nacionalidade:</label>
                         <select name="nationality" required>
                             <option value="">Selecione...</option>
                             <option value="Brasileira">Brasileira</option>
@@ -39,7 +39,7 @@
                 </div>
                 <div class="form-grid three-cols">
                     <div class="form-group">
-                        <label>7 - Empresa de Navegação:</label>
+                        <label>Empresa de Navegação:</label>
                         <input type="text" name="navigation_company" required>
                     </div>
                     <div class="form-group">
@@ -54,43 +54,43 @@
             </fieldset>
 
             <fieldset class="form-section">
-                <legend>II - Informações do Serviço</legend>
+                <legend>Informações do Serviço</legend>
                 
                 <div class="form-grid four-cols">
                     <div class="form-group">
-                        <label>8 - Data Início:</label>
+                        <label>Data Início:</label>
                         <input type="date" name="start_date" required>
                     </div>
                     <div class="form-group">
-                        <label>9 - Hora Início:</label>
+                        <label>Hora Início:</label>
                         <input type="time" name="start_time" required>
                     </div>
                     <div class="form-group">
-                        <label>10 - Data Término:</label>
+                        <label>Data Término:</label>
                         <input type="date" name="end_date" required>
                     </div>
                     <div class="form-group">
-                        <label>11 - Hora Término:</label>
+                        <label>Hora Término:</label>
                         <input type="time" name="end_time" required>
                     </div>
                 </div>
 
                 <div class="retrieval-mode-group">
-                    <label class="group-label">II.2 - Modalidade de Retirada:</label>
+                    <label class="group-label">Modalidade de Retirada:</label>
                     <div class="radio-group">
-                        <label><input type="radio" name="retrieval_mode" value="TERRA" checked onchange="toggleMTR(this.value)"> 12 - Terra</label>
-                        <label><input type="radio" name="retrieval_mode" value="MAR" onchange="toggleMTR(this.value)"> 13 - Mar</label>
+                        <label><input type="radio" name="retrieval_mode" value="TERRA" checked onchange="toggleMTR(this.value)">Terra</label>
+                        <label><input type="radio" name="retrieval_mode" value="MAR" onchange="toggleMTR(this.value)">Mar</label>
                     </div>
                 </div>
 
                 <div class="provider-info">
-                    <p><strong>II.3 - Empresa Prestadora:</strong> {{autoFillData.razao_social}} (CNPJ: {{autoFillData.cnpj}})</p>
+                    <p><strong>Empresa Prestadora:</strong> {{autoFillData.razao_social}} (CNPJ: {{autoFillData.cnpj}})</p>
                     <p><small>Contato: {{autoFillData.contact_name}} | Tel: {{autoFillData.contact_phone}} | Email: {{autoFillData.contact_email}}</small></p>
                 </div>
             </fieldset>
 
             <fieldset class="form-section">
-                <legend>III - Tipo e Quantidade de Resíduos</legend>
+                <legend>Tipo e Quantidade de Resíduos</legend>
                 
                 <div class="table-container">
                     <table class="crre-waste-table">
@@ -115,7 +115,7 @@
             </fieldset>
 
             <fieldset class="form-section">
-                <legend>IV - Destinação Final</legend>
+                <legend>Destinação Final</legend>
                 <div class="form-group">
                     <label>Selecione a Empresa de Destino (Aprovada pela APS):</label>
                     <select name="destination_company_id" required>
