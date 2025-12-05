@@ -3,3 +3,4 @@ node_modules
 src/database/nabor.db
 generate-hash.js
 src/uploads/
+resumo.txt
